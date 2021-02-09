@@ -1,0 +1,97 @@
+*{
+  box-sizing: border-box;
+  color: #555;
+}
+h1{
+  text-align: center;
+  font-family: 'Noto Serif TC', serif;
+  letter-spacing: 10px;
+}
+main{
+  border: 1px solid #ccc;
+  width: 750px;
+  margin: auto;
+}
+main .img{
+  height: 400px;
+  background: #ccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  transition: .5s ease-in-out;
+}
+main .content{
+  width: 700px;
+  margin:auto;
+}
+.title{
+  display: flex;
+  width: 700px;
+}
+.title>*{
+  display: inline-block;
+}
+.title #year_month{
+  text-align: center;
+  line-height: 50px;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Fredericka the Great', cursive;
+  letter-spacing: 5px;
+}
+.title .button{
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  background: none;
+  opacity: .5;
+}
+.title .button:hover{
+  opacity: 1;
+}
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+  font-family: 'Noto Serif TC', serif;
+
+}
+.list>.date{
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.list>.date.today{
+  text-shadow: 0 0 20px rgb(255, 0, 170),0 0 20px rgb(255, 240, 30),0 0 20px rgb(255, 238, 0);
+}
+.list>.date.festival{
+  position: relative;
+}
+.list>.date.festival::after{
+  content: attr(data-festival); 
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(218, 136, 60);
+  position: absolute;
+  bottom:2px;
+  left: 0;
+  right: 0;
+}
+.list.day .date{
+  font-weight: 900;
+  text-shadow: 1px 1px 3px #ccc;
+}
+.list>.fadeout{
+  opacity: .3;
+}
+.list .sun, .list .sat{
+  font-weight:900;
+}
+.list .sun{
+  color: red;
+}
+.list .sat{
+  color: green;
+}
