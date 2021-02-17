@@ -2,15 +2,30 @@
   box-sizing: border-box;
   color: #555;
 }
+body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ccc;
+}
+.left{
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 10px;
+  flex-grow: 1;
+  max-width: 750px;
+
+}
 h1{
   text-align: center;
   font-family: 'Noto Serif TC', serif;
-  letter-spacing: 10px;
+  letter-spacing: 15px;
 }
 main{
   border: 1px solid #ccc;
+  background-color: #fff;
+
   width: 750px;
-  margin: auto;
 }
 main .img{
   height: 400px;
@@ -27,6 +42,8 @@ main .content{
 .title{
   display: flex;
   width: 700px;
+  margin: 20px auto;
+  justify-content: center;
 }
 .title>*{
   display: inline-block;
@@ -39,7 +56,7 @@ main .content{
   font-family: 'Fredericka the Great', cursive;
   letter-spacing: 5px;
 }
-.title .button{
+.button{
   outline: none;
   border: none;
   padding: 10px;
@@ -47,8 +64,9 @@ main .content{
   font-weight: bold;
   background: none;
   opacity: .5;
+  cursor: pointer;
 }
-.title .button:hover{
+.button:hover{
   opacity: 1;
 }
 .list{
@@ -63,9 +81,16 @@ main .content{
   height: 50px;
   text-align: center;
 }
+/* 星期 */
+.list.day .date{
+  font-weight: 900;
+  text-shadow: 1px 1px 3px #ccc;
+}
+/* 今天 */
 .list>.date.today{
   text-shadow: 0 0 20px rgb(255, 0, 170),0 0 20px rgb(255, 240, 30),0 0 20px rgb(255, 238, 0);
 }
+/* 節日 */
 .list>.date.festival{
   position: relative;
 }
@@ -79,13 +104,10 @@ main .content{
   left: 0;
   right: 0;
 }
-.list.day .date{
-  font-weight: 900;
-  text-shadow: 1px 1px 3px #ccc;
-}
 .list>.fadeout{
   opacity: .3;
 }
+/* 六日 */
 .list .sun, .list .sat{
   font-weight:900;
 }
@@ -94,4 +116,12 @@ main .content{
 }
 .list .sat{
   color: green;
+}
+/* 回到今天 */
+.backToday{
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 16px;
 }
