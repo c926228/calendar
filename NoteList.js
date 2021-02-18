@@ -33,7 +33,7 @@ function creatList(data = [], dom){
 };
 
 function noteHandler(e){
-  console.log(e.target);
+  // console.log(e.target);
 
   //判斷是否為 input 被 click
   if(!e.target.matches("input") && !e.target.matches("div")) return; // 不是input 就跳過
@@ -42,14 +42,12 @@ function noteHandler(e){
 
   //toggle
   if(e.target.matches("input")){
-    console.log("toggle");
     //更新JS
     note[index].done = !note[index].done;
   }
 
   //delete
   if(e.target.matches("div")){
-    console.log("delete");
     //更新JS
     note.splice(index,1);
   }
