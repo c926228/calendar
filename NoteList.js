@@ -26,24 +26,42 @@ function creatList(data = [], dom){
           note.done ? 'checked' : ''
         } >
         <label for="item${i}">${note.noteText}</label>
+        <div class="button deleteBtn" data-index="${i}">DELETE</div>
       </li>
     `;
   }).join("");
 };
 
-function toggleNote(e){
+function noteHandler(e){
+  console.log(e.target);
+
   //判斷是否為 input 被 click
-  if(!e.target.matches("input")) return; // 不是input 就跳過
-  console.log(e);
+  if(!e.target.matches("input") && !e.target.matches("div")) return; // 不是input 就跳過
+
   let index = e.target.dataset["index"];
-  //更新JS
-  note[index].done = !note[index].done;
+
+  //toggle
+  if(e.target.matches("input")){
+    console.log("toggle");
+    //更新JS
+    note[index].done = !note[index].done;
+  }
+
+  //delete
+  if(e.target.matches("div")){
+    console.log("delete");
+    //更新JS
+    note.splice(index,1);
+  }
+  
   //更新LS
   localStorage.setItem("items",JSON.stringify(note));
   //更新dom
   creatList(note, noteList);
+
 };
 
-// creatList(note, noteList);
+
+creatList(note, noteList);
 addNotes.addEventListener("submit", addNote);
-noteList.addEventListener("click", toggleNote);
+noteList.addEventListener("click", noteHandler);

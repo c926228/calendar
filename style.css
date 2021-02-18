@@ -38,12 +38,14 @@ h1{
 .noteList li{
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
+  display: flex;
 }
 .noteList input{
   display: none;
 }
 .noteList label{
   cursor: pointer;
+  flex: 1;
 }
 .noteList input + label::before{
   content: "□";
@@ -69,19 +71,34 @@ h1{
   padding: 10px;
   cursor: pointer;
   opacity: .7;
-  background-color: #aaa;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #87be53;
+  background-color: #fff;
+  color: #87be53;
   letter-spacing: 1px;
   font-weight: bold;
 }
 .addNote input[type="submit"]:hover{
   opacity: 1;
+  background-color: #87be53;
+  color: #fff;
 }
 .addNote input[type="submit"]:focus{
   outline: none;
 }
+.button.deleteBtn{
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #e28686;
+  color: #e28686;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.button.deleteBtn:hover{
+  background-color: #e28686;
+  color: #fff;
 
+}
 
 /* main */
 main{
