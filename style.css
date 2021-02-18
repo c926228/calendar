@@ -69,11 +69,11 @@ h1{
   padding: 10px;
   cursor: pointer;
   opacity: .7;
-  background-color: #ccc;
-  border: 1px solid #aaa;
+  background-color: #aaa;
+  border: 1px solid #fff;
   color: #fff;
   letter-spacing: 1px;
-  text-shadow: #888 1px 1px;
+  font-weight: bold;
 }
 .addNote input[type="submit"]:hover{
   opacity: 1;
@@ -106,6 +106,7 @@ main .content{
   width: 700px;
   margin: 20px auto;
   justify-content: center;
+  align-items: center;
 }
 .title>*{
   display: inline-block;

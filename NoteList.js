@@ -44,6 +44,6 @@ function toggleNote(e){
   creatList(note, noteList);
 };
 
-creatList(note, noteList);
+// creatList(note, noteList);
 addNotes.addEventListener("submit", addNote);
 noteList.addEventListener("click", toggleNote);
