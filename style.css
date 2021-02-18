@@ -1,6 +1,7 @@
 *{
   box-sizing: border-box;
   color: #555;
+  font-family: 'Noto Serif TC', serif;
 }
 body{
   display: flex;
@@ -8,6 +9,7 @@ body{
   justify-content: center;
   background-color: #ccc;
 }
+/* left */
 .left{
   border: 1px solid #ccc;
   background-color: #fff;
@@ -18,13 +20,73 @@ body{
 }
 h1{
   text-align: center;
-  font-family: 'Noto Serif TC', serif;
   letter-spacing: 15px;
 }
+/* 回到今天 */
+.button.backToday{
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 16px;
+}
+/* Note List */
+.noteList{
+  list-style: none;
+  padding: 0;
+}
+.noteList li{
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+.noteList input{
+  display: none;
+}
+.noteList label{
+  cursor: pointer;
+}
+.noteList input + label::before{
+  content: "□";
+  margin-right: 10px;
+}
+.noteList input:checked + label::before{
+  content: "🐾";
+}
+.addNote{
+  display: flex;
+}
+.addNote input[name="note"]{
+  border:1px solid #ccc;
+  padding: 10px;
+  flex: 1;
+  margin-right: 10px;
+}
+.addNote input[name="note"]:focus{
+  border: 1px solid #abc;
+  outline: 2px solid hsla(210, 25%, 73%,.3);
+}
+.addNote input[type="submit"]{
+  padding: 10px;
+  cursor: pointer;
+  opacity: .7;
+  background-color: #ccc;
+  border: 1px solid #aaa;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: #888 1px 1px;
+}
+.addNote input[type="submit"]:hover{
+  opacity: 1;
+}
+.addNote input[type="submit"]:focus{
+  outline: none;
+}
+
+
+/* main */
 main{
   border: 1px solid #ccc;
   background-color: #fff;
-
   width: 750px;
 }
 main .img{
@@ -73,7 +135,6 @@ main .content{
   display: flex;
   flex-wrap: wrap;
   width: 700px;
-  font-family: 'Noto Serif TC', serif;
 
 }
 .list>.date{
@@ -116,12 +177,4 @@ main .content{
 }
 .list .sat{
   color: green;
-}
-/* 回到今天 */
-.backToday{
-  display: inline-block;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 16px;
 }
