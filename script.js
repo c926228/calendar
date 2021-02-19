@@ -97,7 +97,7 @@ function renderDate(date, list) {
   
   cell.dataset["date"] = thisYear+"/"+thisDate;
 
-  cell.className = "date"+
+  cell.className = "date"+" pointer"+
   (date.getMonth() === state.current.getMonth() ? "" : " fadeout")+ //判斷是否為本月
   (cell.dataset["date"] === todayDay ? " today" : ""); //判斷是否為今天
 

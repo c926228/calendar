@@ -166,6 +166,12 @@ main .content{
   font-weight: 900;
   text-shadow: 1px 1px 3px #ccc;
 }
+.list .pointer{
+  cursor: pointer;
+} 
+.list .pointer:hover{
+  text-shadow: 0 0 10px rgb(255, 251, 0),0 0 10px rgb(255, 240, 30),0 0 10px rgb(255, 238, 0)
+}
 /* 今天 */
 .list>.date.today{
   text-shadow: 0 0 20px rgb(255, 0, 170),0 0 20px rgb(255, 240, 30),0 0 20px rgb(255, 238, 0);
