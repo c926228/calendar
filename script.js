@@ -1,5 +1,10 @@
+//今天
+var today = new Date();
+var todayDay = today.getFullYear()+"/"+(today.getMonth()+1)+"/"+today.getDate(); 
+
 // 資料
 let state = null ;
+
 
 // 初始化萬年曆
 function init(){
@@ -66,21 +71,22 @@ function render(){
     renderDate(date, list);
     date.setDate(date.getDate()+1);
   }
-
   
-  
+  //本月照片
   img.style.backgroundImage  = "url(./imgs/cats/"+month+".jpg)";
   
 };
 
 //畫日期格子
 function renderDate(date, list) {
-  let today = new Date();
+  
   let thisDate = (date.getMonth()+1)+"/"+date.getDate(); // 月/日
+  let thisYear = date.getFullYear();
   let cell = document.createElement("div");//創造日期格子
   let festival = [
     {festivalDate:"1/1", festivalName:"元旦"},
     {festivalDate:"2/14", festivalName:"情人節"},
+    {festivalDate:"2/22", festivalName:"猫の日"},
     {festivalDate:"3/14", festivalName:"白色情人節"},
     {festivalDate:"4/5", festivalName:"清明節"},
     {festivalDate:"5/1", festivalName:"勞動節"},
@@ -89,10 +95,11 @@ function renderDate(date, list) {
     {festivalDate:"12/25", festivalName:"聖誕節"}
   ];
   
+  cell.dataset["date"] = thisYear+"/"+thisDate;
 
   cell.className = "date"+
   (date.getMonth() === state.current.getMonth() ? "" : " fadeout")+ //判斷是否為本月
-  (thisDate === (today.getMonth()+1)+"/"+today.getDate() ? " today" : ""); //判斷是否為今天
+  (cell.dataset["date"] === todayDay ? " today" : ""); //判斷是否為今天
 
   //今天節日
   festival.forEach( value => {
@@ -108,3 +115,12 @@ function renderDate(date, list) {
 
 // 處理流程 控制
 init();
+let dateCell = document.querySelectorAll(".date");
+dateCell.forEach(() => addEventListener("click",choiceDate));
+
+function choiceDate(e){
+  if(!e.target.dataset.date){return};
+  dateCell.forEach((e) => e.classList.remove("choiceDate"))
+  noteDate.value = e.target.dataset.date;
+  e.target.classList.add("choiceDate");
+}

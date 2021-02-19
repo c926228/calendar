@@ -135,6 +135,7 @@ main .content{
   font-weight: bold;
   font-family: 'Fredericka the Great', cursive;
   letter-spacing: 5px;
+  width: 260px;
 }
 .button{
   outline: none;
@@ -195,4 +196,8 @@ main .content{
 }
 .list .sat{
   color: green;
+}
+/* 選取的日子 */
+.list>.choiceDate{
+  text-shadow: 0 0 10px rgb(255, 251, 0),0 0 10px rgb(255, 240, 30),0 0 10px rgb(255, 238, 0) !important;
 }
