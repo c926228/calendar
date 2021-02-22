@@ -77,6 +77,8 @@ function noteHandler(e){
   localStorage.setItem("items",JSON.stringify(note));
   //更新dom
   creatList(note, noteList);
+  thisYYYYMMnote("flex");
+
 
 };
 
