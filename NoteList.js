@@ -28,6 +28,8 @@ function addNote(e){
   this.reset();
   //更新畫面
   creatList(note, noteList);
+  thisYYYYMMnote("flex");
+
   
   // let dataDate = `[data-date='${noteDate}']`;
   // document.querySelector(dataDate).classList.remove("choiceDate"); 
