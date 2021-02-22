@@ -28,7 +28,6 @@ function addNote(e){
   this.reset();
   //更新畫面
   creatList(note, noteList);
-  thisYYYYMMnote("flex");
 
   
   // let dataDate = `[data-date='${noteDate}']`;
@@ -49,7 +48,7 @@ function creatList(data = [], dom){
       </li>
     `;
   }).join("");
-
+  thisYYYYMMnote("flex");
 };
 
 function noteHandler(e){
@@ -77,7 +76,6 @@ function noteHandler(e){
   localStorage.setItem("items",JSON.stringify(note));
   //更新dom
   creatList(note, noteList);
-  thisYYYYMMnote("flex");
 
 
 };
@@ -91,7 +89,6 @@ function thisYYYYMMnote(style){
 };
 
 creatList(note, noteList);
-thisYYYYMMnote("flex");
 
 addNotes.addEventListener("submit", addNote);
 noteList.addEventListener("click", noteHandler);
