@@ -1,3 +1,13 @@
+:root{
+  --red: #e28686;
+  --green: #87be53;
+  --festival:#da883c;
+  --todayShadow: 0 0 20px #ff00aa,0 0 20px #fff01e,0 0 20px #ffee00;
+  --yellowShadow: 0 0 10px #fffb00,0 0 10px #fff01e,0 0 10px #ffee00;
+  --haveNote:0 0 10px #e28686,0 0 10px #e28686,0 0 10px #e28686,0 0 20px #e28686;
+  --border: 1px solid;
+}
+
 *{
   box-sizing: border-box;
   color: #555;
@@ -11,12 +21,12 @@ body{
 }
 /* left */
 .left{
-  border: 1px solid #ccc;
+  border:var(--border) #ccc;
   background-color: #fff;
   padding: 10px;
   flex-grow: 1;
   max-width: 750px;
-
+  min-width: 750px;
 }
 h1{
   text-align: center;
@@ -25,10 +35,14 @@ h1{
 /* 回到今天 */
 .button.backToday{
   display: inline-block;
-  border: 1px solid #ccc;
+  border: var(--border) #ccc;
+  background: #fff;
   padding: 5px 10px;
   font-family: 'Fredericka the Great', cursive;
-  font-size: 16px;
+  font-size: 12px;
+  position: fixed;
+  top: 15px;
+  left: 10px;
 }
 /* Note List */
 .noteList{
@@ -36,9 +50,10 @@ h1{
   padding: 0;
 }
 .noteList li{
-  border-bottom: 1px solid #ccc;
+  border-bottom:var(--border) #ccc;
   padding: 10px 0;
-  display: flex;
+  /* display: flex; */
+  display: none;
 }
 .noteList input{
   display: none;
@@ -58,28 +73,28 @@ h1{
   display: flex;
 }
 .addNote input[name="note"]{
-  border:1px solid #ccc;
+  border:var(--border) #ccc;
   padding: 10px;
   flex: 1;
   margin-right: 10px;
 }
 .addNote input[name="note"]:focus{
-  border: 1px solid #abc;
+  border: var(--border) #abc;
   outline: 2px solid hsla(210, 25%, 73%,.3);
 }
 .addNote input[type="submit"]{
   padding: 10px;
   cursor: pointer;
   opacity: .7;
-  border: 1px solid #87be53;
+  border: var(--border) var(--green);
   background-color: #fff;
-  color: #87be53;
+  color: var(--green);
   letter-spacing: 1px;
   font-weight: bold;
 }
 .addNote input[type="submit"]:hover{
   opacity: 1;
-  background-color: #87be53;
+  background-color: var(--green);
   color: #fff;
 }
 .addNote input[type="submit"]:focus{
@@ -88,21 +103,21 @@ h1{
 .button.deleteBtn{
   display: inline-block;
   padding: 5px;
-  border: 1px solid #e28686;
-  color: #e28686;
+  border: var(--border) var(--red);
+  color: var(--red);
   letter-spacing: 1px;
   font-weight: bold;
   font-size: 12px;
 }
 .button.deleteBtn:hover{
-  background-color: #e28686;
+  background-color: var(--red);
   color: #fff;
 
 }
 
 /* main */
 main{
-  border: 1px solid #ccc;
+  border: var(--border) #ccc;
   background-color: #fff;
   width: 750px;
 }
@@ -135,7 +150,7 @@ main .content{
   font-weight: bold;
   font-family: 'Fredericka the Great', cursive;
   letter-spacing: 5px;
-  width: 260px;
+  width: 265px;
 }
 .button{
   outline: none;
@@ -170,11 +185,11 @@ main .content{
   cursor: pointer;
 } 
 .list .pointer:hover{
-  text-shadow: 0 0 10px rgb(255, 251, 0),0 0 10px rgb(255, 240, 30),0 0 10px rgb(255, 238, 0)
+  text-shadow:var(--yellowShadow);
 }
 /* 今天 */
 .list>.date.today{
-  text-shadow: 0 0 20px rgb(255, 0, 170),0 0 20px rgb(255, 240, 30),0 0 20px rgb(255, 238, 0);
+  text-shadow:var(--todayShadow);
 }
 /* 節日 */
 .list>.date.festival{
@@ -184,7 +199,7 @@ main .content{
   content: attr(data-festival); 
   font-size: 14px;
   font-weight: 400;
-  color: rgb(218, 136, 60);
+  color: var(--festival);
   position: absolute;
   bottom:2px;
   left: 0;
@@ -198,12 +213,16 @@ main .content{
   font-weight:900;
 }
 .list .sun{
-  color: red;
+  color: var(--red);
 }
 .list .sat{
-  color: green;
+  color: var(--green);
 }
 /* 選取的日子 */
 .list>.choiceDate{
-  text-shadow: 0 0 10px rgb(255, 251, 0),0 0 10px rgb(255, 240, 30),0 0 10px rgb(255, 238, 0) !important;
+  text-shadow: var(--yellowShadow)!important;
+}
+/*有代辦事項的日子*/
+.list>.haveNote{
+  text-shadow: var(--haveNote);
 }

@@ -1,6 +1,11 @@
 //今天
 var today = new Date();
-var todayDay = today.getFullYear()+"/"+(today.getMonth()+1)+"/"+today.getDate(); 
+var todayDay = today.getFullYear()+"-"+MMDD((today.getMonth()+1))+"/"+MMDD(today.getDate()); 
+console.log("todayDay",todayDay)
+
+//Note 日期
+// let LSNoteDate = JSON.parse(localStorage.getItem("items")).map((e)=> e.noteDate);
+// console.log(LSNoteDate);
 
 // 資料
 let state = null ;
@@ -16,14 +21,18 @@ function init(){
 
 //上個月
 function preMonth() {
+  thisYYYYMMnote("none");
   state.current.setMonth(state.current.getMonth()-1); //現在月份-1
   render();
+  thisYYYYMMnote("flex");
 }
 
 //下個月
 function nextMonth() {
+  thisYYYYMMnote("none");
   state.current.setMonth(state.current.getMonth()+1); //現在月份-1
   render();
+  thisYYYYMMnote("flex");
 }
 
 // 根據資料產生畫面
@@ -40,9 +49,11 @@ function render(){
   head.textContent = state.current.getFullYear() + "  " + monthEN[month];
 
 
-  let list = document.querySelector("#list");
+  let list = document.getElementById("list");
+  let noteMonth = document.getElementById("noteMonth");
 
   list.innerHTML=""; //清空畫面
+  noteMonth.innerHTML= month+1; //清空
 
   // 取得本月第一天 //(年, 月, 第一天)
   let firstDate = new Date(state.current.getFullYear(), state.current.getMonth(), 1); 
@@ -50,7 +61,7 @@ function render(){
   let date = new Date(firstDate.getFullYear(), firstDate.getMonth(), 1); 
 
   //往前算到星期日
-  date.setDate(date.getDate()-date.getDay()); // getDate()取得星期 0:星期日, 1:星期一 .....
+  date.setDate(date.getDate()-date.getDay()); // getDay()取得星期 0:星期日, 1:星期一 .....
 
   //畫出上個月的後幾天
   while(date < firstDate){ //當月份小於本月
@@ -80,30 +91,35 @@ function render(){
 //畫日期格子
 function renderDate(date, list) {
   
-  let thisDate = (date.getMonth()+1)+"/"+date.getDate(); // 月/日
   let thisYear = date.getFullYear();
+  let thisMonth = MMDD(date.getMonth()+1);
+  let thisDate = MMDD(date.getDate());
+  let thisMMDD = thisMonth+"/"+thisDate; // 這隔日期 格式MMDD
+  
   let cell = document.createElement("div");//創造日期格子
   let festival = [
-    {festivalDate:"1/1", festivalName:"元旦"},
-    {festivalDate:"2/14", festivalName:"情人節"},
-    {festivalDate:"2/22", festivalName:"猫の日"},
-    {festivalDate:"3/14", festivalName:"白色情人節"},
-    {festivalDate:"4/5", festivalName:"清明節"},
-    {festivalDate:"5/1", festivalName:"勞動節"},
-    {festivalDate:"8/8", festivalName:"父親節"},
+    {festivalDate:"01/01", festivalName:"元旦"},
+    {festivalDate:"02/14", festivalName:"情人節"},
+    {festivalDate:"02/22", festivalName:"猫の日"},
+    {festivalDate:"03/14", festivalName:"白色情人節"},
+    {festivalDate:"04/05", festivalName:"清明節"},
+    {festivalDate:"05/01", festivalName:"勞動節"},
+    {festivalDate:"08/08", festivalName:"父親節"},
     {festivalDate:"10/10", festivalName:"雙十節"},
     {festivalDate:"12/25", festivalName:"聖誕節"}
   ];
-  
-  cell.dataset["date"] = thisYear+"/"+thisDate;
+
+  //dataset
+  cell.dataset["yyyymm"] = thisYear+"-"+thisMonth;
+  cell.dataset["dd"] = thisDate;
 
   cell.className = "date"+" pointer"+
   (date.getMonth() === state.current.getMonth() ? "" : " fadeout")+ //判斷是否為本月
-  (cell.dataset["date"] === todayDay ? " today" : ""); //判斷是否為今天
+  ((cell.dataset["yyyymm"]+"/"+cell.dataset["dd"]) === todayDay ? " today" : ""); //判斷是否為今天
 
   //今天節日
   festival.forEach( value => {
-    if(thisDate == value.festivalDate){
+    if(thisMMDD == value.festivalDate){
       cell.classList.add("festival");
       cell.setAttribute("data-festival", value.festivalName);//新增dataset
     }
@@ -118,9 +134,21 @@ init();
 let dateCell = document.querySelectorAll(".date");
 dateCell.forEach(() => addEventListener("click",choiceDate));
 
+//日期被選中
 function choiceDate(e){
-  if(!e.target.dataset.date){return};
-  dateCell.forEach((e) => e.classList.remove("choiceDate"))
-  noteDate.value = e.target.dataset.date;
+  if(!e.target.dataset.dd){return};
+  dateCell.forEach((a) => a.classList.remove("choiceDate"));
+  // ---------------------------------------------------
+  noteYYYYMM.value = e.target.dataset.yyyymm;
+  noteDD.value = e.target.dataset.dd;
+
   e.target.classList.add("choiceDate");
 }
+
+//月份日期改為兩位數
+function MMDD(e){
+  if(e < 10){ return ("0"+e)
+  }else{return e}
+}
+
+

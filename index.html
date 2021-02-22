@@ -17,22 +17,24 @@
 <body>
   <div class="left">
     <h1>萬年曆</h1>
-    <div class="button backToday" onclick="init();">BACK TODAY</div>
+    
+    <h3><span id="noteMonth" >2</span>月記事 <span class="button backToday" onclick="init();">BACK TODAY</span></h3>
     <ul class="noteList">
       <li>
         <input type="checkbox" name="11" id="11">
         <label for="11">代辦事項1...</label>
         <div class="button deleteBtn">DELETE</div>
       </li>
-
     </ul>
     <form class="addNote" >
-      <input type="hidden" id="noteDate">
+      <input type="hidden" id="noteYYYYMM">
+      <input type="hidden" id="noteDD">
       <input type="text" name="note" placeholder="請先點選記事日期後，在此輸入代辦事項。" required>
       <input type="submit" value="+ Add Note">
     </form>
 
   </div>
+
   <main>
     <div class="img"></div>
     <div class="content">
