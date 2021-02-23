@@ -26,6 +26,7 @@ function styleHandler(){
   
   //更新DOM
   updateDOM();
+  styleMenuBtn()
 };
 //更新畫面 
 function updateDOM(){
@@ -36,6 +37,7 @@ function updateDOM(){
   
   img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".jpg)";
   document.documentElement.style.setProperty("--mainColor", style.mainColor);
+  
 }
 
 inputs.forEach(input => {
