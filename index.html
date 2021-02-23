@@ -18,7 +18,7 @@
   <div class="left">
     <h1>萬年曆</h1>
     
-    <h3><span id="noteMonth" >2</span>月記事 <span class="button backToday" onclick="init();">BACK TODAY</span></h3>
+    <h3><span id="noteMonth" >2</span>月記事 <span class="button leftBtn backToday" onclick="init();">BACK TODAY</span></h3>
     <ul class="noteList">
       <li>
         <input type="checkbox" name="11" id="11">
@@ -57,7 +57,27 @@
     </div>
 
   </main>
-
+  <!-- 更換樣式 -->
+  <span id="styleMenuBtn" class="button leftBtn styleMenuBtn" onclick="styleMenuBtn();" > CHANGE STYLE </span>
+  <div id="styleMenu" class="styleMenu">
+    <h3>更換樣式</h3>
+    <label for="mainColor"><p>主要色彩</p></label>
+    <div style="margin-bottom: 5px;">
+      <input class="styleControls" type="color" id="mainColor" name="mainColor" value="">
+    </div>
+    <p>主題圖片</p>
+    <div>
+      <input class="styleControls" type="radio" name="bgImg" id="cats" value="cats">
+      <label for="cats">萌萌貓貓</label>
+    </div>
+    <div>
+      <input class="styleControls" type="radio" name="bgImg" id="starwar" value="starwar">
+      <label for="starwar">星際大戰</label>
+    </div>
+  </div>
+  
+  <!-- 更換樣式 JS -->
+  <script src="./changeStyle.js"></script>
   <!-- 月曆 J S  -->
   <script src="./script.js"></script>
   <!-- Note List J S  -->

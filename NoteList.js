@@ -18,6 +18,7 @@ function addNote(e){
   let addNoteDD = noteDD.value;
   let obj = {noteText,done: false,noteYYYYMM:addNoteYYYYMM,noteDD:addNoteDD};
   note.push(obj); //更新JS
+  console.log(obj);
 
   ///重新排序note陣列
   note.sort((a, b) => a.noteDD > b.noteDD ? 1 : -1);
@@ -84,7 +85,6 @@ function thisYYYYMMnote(style){
   let thisYYYYMM = state.current.getFullYear()+"-"+MMDD(state.current.getMonth()+1);
   thisYYYYMM = `.YM${thisYYYYMM}`;
   let noteLis = document.querySelectorAll(thisYYYYMM);
-  console.log(style);
   noteLis.forEach((i)=> i.style.display=style);
 };
 

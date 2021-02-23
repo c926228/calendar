@@ -84,7 +84,7 @@ function render(){
   }
   
   //本月照片
-  img.style.backgroundImage  = "url(./imgs/cats/"+month+".jpg)";
+  img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".jpg)";
   
 };
 
