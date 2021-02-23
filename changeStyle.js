@@ -1,5 +1,5 @@
 
-const inputs = document.querySelectorAll("input");
+const inputs = document.querySelectorAll("#styleMenu input");
 let style = JSON.parse(localStorage.getItem("style")) || {mainColor: "#ccc", bgImg: "cats"} ;
 var imgStyle = style.bgImg; // starwar cats
 
