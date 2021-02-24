@@ -83,9 +83,17 @@ h1{
   flex: 1;
   margin-right: 10px;
 }
+
 .addNote input[name="note"]:focus{
   border: var(--border) #abc;
   outline: 2px solid hsla(210, 25%, 73%,.3);
+}
+input:-webkit-autofill{
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #555;
+}
+input[type=text]:focus{
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
 .addNote input[type="submit"]{
   padding: 10px;
