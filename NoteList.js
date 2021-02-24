@@ -13,12 +13,12 @@ noteDD.value = MMDD(today.getDate());
 //新增清單
 function addNote(e){
   e.preventDefault();//取消預設發生事件 submit > 頁面重整
+
   let noteText = this.querySelector("[name=note]").value;
   let addNoteYYYYMM = noteYYYYMM.value;
   let addNoteDD = noteDD.value;
   let obj = {noteText,done: false,noteYYYYMM:addNoteYYYYMM,noteDD:addNoteDD};
   note.push(obj); //更新JS
-  console.log(obj);
 
   ///重新排序note陣列
   note.sort((a, b) => a.noteDD > b.noteDD ? 1 : -1);

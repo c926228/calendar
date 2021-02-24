@@ -131,13 +131,21 @@ function renderDate(date, list) {
 
 // 處理流程 控制
 init();
-let dateCell = document.querySelectorAll(".date");
-dateCell.forEach(() => addEventListener("click",choiceDate));
+// 寫法1
+// let dateCell = document.querySelectorAll(".date");
+// dateCell.forEach(() => addEventListener("click",choiceDate));
+// 寫法2
+let dateCell = document.getElementsByClassName("date");
+Array.prototype.forEach.call(dateCell,()=>addEventListener("click",choiceDate))
 
 //日期被選中
 function choiceDate(e){
   if(!e.target.dataset.dd){return};
-  dateCell.forEach((a) => a.classList.remove("choiceDate"));
+// 寫法1
+  // dateCell.forEach((a) => a.classList.remove("choiceDate"));
+// 寫法2
+  Array.prototype.forEach.call(dateCell,(a)=>a.classList.remove("choiceDate"));
+
   // ---------------------------------------------------
   noteYYYYMM.value = e.target.dataset.yyyymm;
   noteDD.value = e.target.dataset.dd;
