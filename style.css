@@ -112,6 +112,9 @@ input[type=text]:focus{
   color: var(--green);
   letter-spacing: 1px;
   font-weight: bold;
+  -webkit-appearance: none;  /* Safari 和 Chrome，常用於iOS下移除內建樣式 */
+  -moz-appearance: none;     /* FireFox */
+  appearance: none;
 }
 .addNote input[type="submit"]:hover{
   opacity: 1;
@@ -430,7 +433,9 @@ span.open{
   }
 }
 /* 540 */
-@media (max-width: 540px){
- 
+@media (max-width: 437px){
+  .list>.date.festival[data-festival="白色情人節"]::after{
+    bottom:0px;
+  }
 }
 
