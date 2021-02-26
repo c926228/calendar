@@ -3,12 +3,23 @@ const inputs = document.querySelectorAll("#styleMenu input");
 let style = JSON.parse(localStorage.getItem("style")) || {mainColor: "#ccc", bgImg: "cats"} ;
 var imgStyle = style.bgImg; // starwar cats
 
-function styleMenuBtn(){
-  let btn = document.getElementById("styleMenuBtn");
+function styleMenuBtn(style){
   let styleMenu = document.getElementById("styleMenu");
+  let HB = document.getElementById("HB");
+  let styleMenuBtn = document.getElementById("styleMenuBtn");
+  let leftBtn = document.getElementsByClassName("leftBtn");
 
-  btn.classList.toggle("open");
-  styleMenu.classList.toggle("open");
+  if(style === "remove"){
+    styleMenu.classList.remove ("open");
+    HB.classList.remove("open");
+    Array.prototype.forEach.call(leftBtn,(e)=>e.classList.remove("open"));
+  }
+  if(style === "toggle"){
+    if(window.innerWidth <= 960) return; // 960 以下 要失效
+    styleMenu.classList.toggle ("open");
+    HB.classList.toggle("open");
+    styleMenuBtn.classList.toggle("open");
+  }
 }
 
 //更改樣式
@@ -26,7 +37,7 @@ function styleHandler(){
   
   //更新DOM
   updateDOM();
-  styleMenuBtn()
+  styleMenuBtn("remove")
 };
 //更新畫面 
 function updateDOM(){
@@ -35,7 +46,7 @@ function updateDOM(){
 
   imgStyle = style.bgImg;
   
-  img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".jpg)";
+  img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".png)";
   document.documentElement.style.setProperty("--mainColor", style.mainColor);
   
 }

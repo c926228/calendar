@@ -15,10 +15,14 @@
   
 </head>
 <body>
+  <!-- 漢堡 -->
+  <div class="HB" id="HB" onclick="HBClick()"></div>
+  <span class="button leftBtn backToday" onclick="backToday();">BACK TODAY</span>
+  <span id="styleMenuBtn" class="button leftBtn styleMenuBtn" onclick="styleMenuBtn(`toggle`);" > CHANGE STYLE </span>
+
   <div class="left">
     <h1>萬年曆</h1>
-    
-    <h3><span id="noteMonth" >2</span>月記事 <span class="button leftBtn backToday" onclick="init();">BACK TODAY</span></h3>
+    <h3><span id="noteMonth" >2</span>月記事 </h3>
     <ul class="noteList">
       <li>
         <input type="checkbox" name="11" id="11">
@@ -32,7 +36,6 @@
       <input type="text" name="note" placeholder="請先點選記事日期後，在此輸入代辦事項。" required>
       <input type="submit" value="+ Add Note">
     </form>
-
   </div>
 
   <main>
@@ -53,12 +56,10 @@
         <div class="date sat">六</div>
       </div>
       <div class="list" id="list"></div>
-
     </div>
-
   </main>
+
   <!-- 更換樣式 -->
-  <span id="styleMenuBtn" class="button leftBtn styleMenuBtn" onclick="styleMenuBtn();" > CHANGE STYLE </span>
   <div id="styleMenu" class="styleMenu">
     <h3>更換樣式</h3>
     <label for="mainColor"><p>主要色彩</p></label>
@@ -78,15 +79,45 @@
       <input class="styleControls" type="radio" name="bgImg" id="ghibli" value="ghibli">
       <label for="ghibli">ジブリ</label>
     </div>
-  </div>
-    
+    <div style="display: none;">
+      <input class="styleControls" type="radio" name="bgImg" id="peanuts" value="peanuts" >
+      <label for="peanuts">Peanuts</label>
+    </div>
+  </div> 
+  
+  <script>
+    var today = new Date();
+
+  </script>
   <!-- 更換樣式 JS -->
   <script src="./changeStyle.js"></script>
   <!-- 月曆 J S  -->
   <script src="./script.js"></script>
   <!-- Note List J S  -->
   <script src="./NoteList.js"></script>
+  <!-- 漢堡 -->
+  <script>
+    function HBClick(e){
+      let HB = document.getElementById("HB");
+      let leftBtn = document.getElementsByClassName("leftBtn");
+      let styleMenu = document.getElementById("styleMenu");
+      HB.classList.toggle("open");
+      styleMenu.classList.toggle("open");
+      Array.prototype.forEach.call(leftBtn,(e)=>e.classList.toggle("open"));
+    }
 
+  </script>
+  <!-- https://c926228.github.io/calendar/ -->
+  <!--
+    機不可失, 髒話面面觀, 天原突破, 
+    開車歌單
+    Approach With Caution - Quakers, Sampa The Great
+
+
+
+
+-->
+  
  
 </body>
 </html>

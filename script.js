@@ -1,5 +1,4 @@
 //今天
-var today = new Date();
 var todayDay = today.getFullYear()+"-"+MMDD((today.getMonth()+1))+"/"+MMDD(today.getDate()); 
 console.log("todayDay",todayDay)
 
@@ -34,6 +33,14 @@ function nextMonth() {
   render();
   thisYYYYMMnote("flex");
 }
+
+//回到今天
+function backToday(){
+  init();
+  thisYYYYMMnote("flex");
+  styleMenuBtn("remove");
+}
+
 
 // 根據資料產生畫面
 function render(){
@@ -84,7 +91,7 @@ function render(){
   }
   
   //本月照片
-  img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".jpg)";
+  img.style.backgroundImage  = "url(./imgs/"+imgStyle+"/"+month+".png)";
   
 };
 
@@ -129,14 +136,19 @@ function renderDate(date, list) {
   list.appendChild(cell); //將日期格子塞進指定DOM->list
 };
 
+
+
 // 處理流程 控制
 init();
+
+
 // 寫法1
 // let dateCell = document.querySelectorAll(".date");
 // dateCell.forEach(() => addEventListener("click",choiceDate));
 // 寫法2
 let dateCell = document.getElementsByClassName("date");
 Array.prototype.forEach.call(dateCell,()=>addEventListener("click",choiceDate))
+
 
 //日期被選中
 function choiceDate(e){

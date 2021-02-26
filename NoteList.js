@@ -30,7 +30,6 @@ function addNote(e){
   //更新畫面
   creatList(note, noteList);
 
-  
   // let dataDate = `[data-date='${noteDate}']`;
   // document.querySelector(dataDate).classList.remove("choiceDate"); 
   // document.querySelector(dataDate).classList.add("haveNote");//當下的 
